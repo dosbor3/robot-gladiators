@@ -1,21 +1,19 @@
-//declaring the playerMoney variable to hold the player's money value
-var playerMoney = 10;
-
 //declaring player variables
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 //Logging multiple values at once
 console.log(playerName, playerAttack, playerHealth);
 
 //Declaring enemy variables
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
 //initializing fight variable to call a function
-var fight = function() {
+var fight = function(enemyName) {
     window.alert("Welcome to Robot Gladiators!");
 
     //prompting the user for option to skip fight
@@ -29,10 +27,10 @@ var fight = function() {
     
         // check enemy's health
         if (enemyHealth <= 0) {
-        window.alert(enemyName + " has died!");
+            window.alert(enemyName + " has died!");
         } 
         else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.");
+            window.alert(enemyName + " still has " + enemyHealth + " health left.");
         }
     
         // remove player's health by subtracting the amount set in the enemyAttack variable
@@ -41,10 +39,10 @@ var fight = function() {
     
         // check player's health
         if (playerHealth <= 0) {
-        window.alert(playerName + " has died!");
+            window.alert(playerName + " has died!");
         } 
         else {
-        window.alert(playerName + " still has " + playerHealth + " health left.");
+            window.alert(playerName + " still has " + playerHealth + " health left.");
         }
 
     // if player choses to skip
@@ -66,10 +64,18 @@ var fight = function() {
         }
     }   
     else {
-    window.alert("You need to choose a valid option. Try again!");
+        window.alert("You need to choose a valid option. Try again!");
     }
 }
 
-//fight function call
-fight();
+//  * Fight all enemy-robots
+for (let i = 0; i < enemyNames.length; i++){
+    fight(enemyNames[i]);
+}
+
+//Game Statesw
+//"WIN" - Player robot has defeated all enemy-robots
+
+//  * Defeate each enemy-robot
+// "LOSE" - Player robot's health is zero or less
 
