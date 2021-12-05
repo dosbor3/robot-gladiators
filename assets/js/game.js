@@ -51,7 +51,7 @@ var fight = function(enemy) {
 //loop funcition for continuous play
 var startGame = function() {
     //  * Fight all enemy-robots
-    for (var i = 0; i < enemyInfo.length; i++) {
+    for (var i = 0; i < enemyInfo.length; i++) {        
         //reset player stats
         playerInfo.reset();
         
@@ -151,11 +151,23 @@ var shop = function() {
     var randomNumber = function (min, max) {
         var value = Math.floor(Math.random() * (max - min + 1) + min); // Ex. range 40 - 60... (60 - 40 + 1) + 40 = return number b/t 40 - 60
         return value;
+    }    
+    
+    //function to handle the player name input
+    var getPlayerName = function() {
+        var name = "";
+
+        //Continue to prompt user, until a valid name is entered
+        while( name === null || name === "") {
+            name = prompt ("What is your robot's name?");
+        }
+        console.log("Your robot's name is " + name);
+        return name;
     }
 
     //declaring player variables
     var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100, 
     attack: 10, 
     money: 10,
@@ -210,6 +222,8 @@ var shop = function() {
         }
 
     ];
+
+    
 
     //Start the game when the page loads
     startGame();
