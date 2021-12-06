@@ -110,7 +110,10 @@ var endGame = function() {
 var shop = function() {
     //ask player what would they like to do
     var shopOptionPrompt = window.prompt(
-        "If you wish to REFILL your health, PRESS 1\n If you wish to UPGRADE your attack, PRESS 2\n If you wish to just LEAVE the store, PRESS 3  Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice " );
+        "If you wish to REFILL your health, PRESS 1\n\nIf you wish to UPGRADE your attack, PRESS 2\n\nIf you wish to just LEAVE the store, PRESS 3" );
+
+        //converting text to int to satisfy switch case
+        shopOptionPrompt = parseInt(shopOptionPrompt);
     
         //Using switch to determine to REFILL, UPGRADE, or, LEAVE the shop based on shopOptionPrompt value
         switch (shopOptionPrompt) {
