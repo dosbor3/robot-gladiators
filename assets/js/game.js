@@ -57,7 +57,7 @@ var startGame = function() {
         
         if (playerInfo.health > 0) {
             //Inform the player of the current round number
-            window.alert("Welcome to Robot Gladiators " + playerInfo.name + "! Round " + (i + 1));
+            window.alert("Welcome to Robot Gladiators" + playerInfo.name + "! Round " + (i + 1));
 
             //Pick new enemy to fight based on the index of the enemy.names array
             var pickedEnemyObj = enemyInfo[i];
@@ -118,29 +118,25 @@ var endGame = function() {
 var shop = function() {
     //ask player what would they like to do
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store?  Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice ");
+        "If you wish to REFILL your health, PRESS 1\n If you wish to UPGRADE your attack, PRESS 2\n If you wish to just LEAVE the store, PRESS 3  Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice " );
     
         //Using switch to determine to REFILL, UPGRADE, or, LEAVE the shop based on shopOptionPrompt value
         switch (shopOptionPrompt) {
-            case "REFILL":
-            case "refill":
+            case 1:
                 playerInfo.refillHealth();
                 break;
                 
-                case "UPGRADE":
-                case "upgrade" :
+                case 2:
                 playerInfo.upgradeAttack();
                 break;
 
-                case "LEAVE":
-                case "leave":
-                    
+                case 3:                    
                 window.alert("Leaving the store.");
                 //do nothing, so function will end
                 break;
 
             default:
-                window.alert("You did not pick a valid option.  Try again.");
+                window.alert("You did not ENTER a valid number.  Try again. ☹️");
                 //call shop() again to force player to pick a valid option
                 shop();
                 break;            
@@ -182,24 +178,24 @@ var shop = function() {
     //function to refill player's health after purchasing more health from the store
     refillHealth: function() {
         if (this.money >= 7) {
-            window.alert("Refilling player's health by 20 for $7 dollars.");
+            window.alert("Refilling player's health by 20 for $7 dollars. 💰");
             this.health += 20;
             this.money -= 7; 
         }
         else {
-            window.alert("You don't have enough money!");
+            window.alert("You don't have enough money! 💰💰");
         }              
     },
 
     //function to upgrade player's attacking power after purchase from store
     upgradeAttack: function() {
         if (this.money >= 7){
-            window.alert("Upgrading player's attack by 6 for $7 dollars.");
+            window.alert("Upgrading player's attack by 6 for $7 dollars. 💰");
             this.attack += 6;
             this.money -= 7;
         }
         else {
-            window.alert("You don't have enough money!");
+            window.alert("You don't have enough money! 💰💰");
         }        
     }
 };
