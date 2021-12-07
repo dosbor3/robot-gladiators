@@ -101,9 +101,25 @@ var startGame = function() {
 }
 //provide game stats to player and option to end game
 var endGame = function() {
+    //check local storage for high score if it's not there, set it to 0
+    var highScore = localStorage.getItem("highscore");
+    if(highScore === nul) {
+        highScore = 0;
+    }
+    //if player's robot score is lower than higher score, inform player
+    if(playerInfo.money < highScore){
+        console.alert("Sorry, you did not beat the high score! ☹️☹️☹️");
+    }
+    else {
+        localStorage.setItem("highScore", playerInfo.money);
+        localStorage.setItem("name", playerInfo.name)
+        console.alert("Congratulations!!, you did not beat the high score! 🤑🤑🤑 ");
+    }
+    
     //if player is still alive, player wins!
     if (playerInfo.health > 0){
         window.alert("Great job, you've suvived he game! You now have a score of " + playerInfo.money + ".");
+
 
     }
     else {
@@ -122,6 +138,9 @@ var endGame = function() {
     else {
        window.alert("The game has now ended. Let's se how you did!"); 
     }
+    
+    
+    
 }
 
 //shop function that provides players with an option to retrieve additional perks
